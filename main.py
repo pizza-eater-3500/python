@@ -69,8 +69,8 @@ for ax, title in zip([ax2, ax3], ['Sun Time Dilation', 'Sagittarius A* Time Dila
     ax.set_ylabel('Time flow rate (t/t∞)')
     ax.grid(True)
     ax.set_title(title)
-ax2.set_ylim(0.99998, 1.00002)
-ax3.set_ylim(0, 1.1)
+    ax2.set_ylim(0.99998, 1.00002)
+    ax3.set_ylim(0, 1.1)
 
 def update(val):
     sun_distance = max(0.1, sun_slider.val) * SUN_RADIUS  
@@ -88,8 +88,9 @@ def update(val):
     sun_observer.center = (2 + sun_pos, 0)
     bh_observer.center = (-2 + bh_slider.val*0.5, 0)
     
-    sun_marker.set_data([sun_slider.val], [sun_dilation])
-    bh_marker.set_data([bh_slider.val], [bh_dilation])
+    #dots on the graph
+    sun_marker[0].set_data([sun_slider.val], [sun_dilation])
+    bh_marker[0].set_data([bh_slider.val], [bh_dilation])
     
     if sun_slider.val < 1.0:
         sun_text.set_text(f'Inside Sun:\n{sun_dilation*100:.6f}%')
